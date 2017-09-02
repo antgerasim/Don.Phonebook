@@ -1,0 +1,32 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using Abp.Application.Services.Dto;
+using Abp.AutoMapper;
+using Abp.Collections.Extensions;
+using Abp.Domain.Repositories;
+using Castle.Core.Internal;
+using Don.Phonebook.Persons.Dto;
+
+namespace Don.Phonebook.Persons
+{
+    public class PersonAppService : PhonebookAppServiceBase, IPersonAppService
+    {
+        private readonly IRepository<Person> _personRepository;
+
+        public PersonAppService(IRepository<Person> personRepository)
+        {
+            _personRepository = personRepository;
+        }
+
+        public ListResultDto<PersonListDto> GetPeople(GetPeopleInput input)
+        {
+            var persons = _personRepository.GetAll().WhereIf(!input.Filter.IsNullOrEmpty(),
+                p => p.Name.Contains(input.Filter) || p.Surname.Contains(input.Filter) ||
+                     p.EmailAddress.Contains(input.Filter)).OrderBy(p => p.Name).ThenBy(p => p.Surname).ToList();
+
+             return new ListResultDto<PersonListDto>(ObjectMapper.Map<List<PersonListDto>>(persons));
+            //var retVal = persons.MapTo<List<PersonListDto>>();
+            //return new ListResultDto<PersonListDto>(retVal);
+        }
+    }
+}

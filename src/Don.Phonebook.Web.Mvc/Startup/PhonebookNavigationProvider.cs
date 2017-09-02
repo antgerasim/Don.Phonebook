@@ -52,7 +52,19 @@ namespace Don.Phonebook.Web.Startup
                         url: "About",
                         icon: "info"
                     )
-                ).AddItem( //Menu items below is just for demonstration!
+                )
+                //don added
+                .AddItem(
+                    new MenuItemDefinition(
+                        PageNames.PhoneBook,
+                        L("PhoneBook"),
+                        url: "PhoneBook",
+                        //icon: "glyphicon glyphicon-book"
+                        icon: "info"
+
+                    )
+                )
+                .AddItem( //Menu items below is just for demonstration!
                     new MenuItemDefinition(
                         "MultiLevelMenu",
                         L("MultiLevelMenu"),

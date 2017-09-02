@@ -11,9 +11,10 @@ using Abp.Notifications;
 namespace Don.Phonebook.Migrations
 {
     [DbContext(typeof(PhonebookDbContext))]
-    partial class PhonebookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170901094250_Added_Persons_Table")]
+    partial class Added_Persons_Table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
