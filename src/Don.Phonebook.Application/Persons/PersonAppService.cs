@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Collections.Extensions;
@@ -27,6 +28,12 @@ namespace Don.Phonebook.Persons
              return new ListResultDto<PersonListDto>(ObjectMapper.Map<List<PersonListDto>>(persons));
             //var retVal = persons.MapTo<List<PersonListDto>>();
             //return new ListResultDto<PersonListDto>(retVal);
+        }
+
+        public async Task CreatePerson(CreatePersonInput input)
+        {
+            var person = ObjectMapper.Map<Person>(input);
+            await _personRepository.InsertAsync(person);
         }
     }
 }

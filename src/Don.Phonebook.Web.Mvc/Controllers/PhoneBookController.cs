@@ -17,8 +17,10 @@ namespace Don.Phonebook.Web.Controllers
         public IActionResult Index(GetPeopleInput input)
         {
             var output = _personAppService.GetPeople(input);
-            var model = new IndexViewModel();
-            return View();
+            var model = new IndexViewModel(output);
+           return View(model);
+            //return View("IndexOld", model);
+
         }
     }
 }
