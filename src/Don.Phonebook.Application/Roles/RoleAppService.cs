@@ -14,6 +14,8 @@ using Don.Phonebook.Authorization.Users;
 using Don.Phonebook.Authorization;
 using Abp.UI;
 
+/*Don Comments: PermissionManager from where? Answer: RoleAppService derives from AsyncCrudAppService -> CrudAppServiceBAse->ApplicationService wich contains PermissionManagerproperty*/
+
 namespace Don.Phonebook.Roles
 {
     [AbpAuthorize(PermissionNames.Pages_Roles)]

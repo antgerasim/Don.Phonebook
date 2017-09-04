@@ -1,8 +1,10 @@
 ﻿using System.Reflection;
+using Abp.Authorization;
 using Abp.AutoMapper;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Don.Phonebook.Authorization;
+using Don.Phonebook.Roles.Dto;
 
 namespace Don.Phonebook
 {
@@ -25,6 +27,10 @@ namespace Don.Phonebook
             {
                 //Scan the assembly for classes which inherit from AutoMapper.Profile
                 cfg.AddProfiles(thisAssembly);
+                //Don mappings
+                cfg.CreateMap<Permission, PermissionDto>().ForMember(p => p.Parent,
+                    option => option.MapFrom(entity => entity.Parent.ToString()));
+
             });
         }
     }
