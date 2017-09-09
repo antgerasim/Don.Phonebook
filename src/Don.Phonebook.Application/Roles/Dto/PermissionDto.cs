@@ -16,13 +16,9 @@ namespace Don.Phonebook.Roles.Dto
         public string Description { get; set; }
 
         //don added works!
-        /*        public Permission Parent { get; set; }
-                public IReadOnlyList<Permission> Children { get; set; }
-
-                public MultiTenancySides MultiTenancySides { get; set; }*/
-
         public string Parent { get; set; }
-        public IReadOnlyList<string> Children { get; set; }
+        /*    public IReadOnlyList<string> Children { get; set; }*/
+        public IReadOnlyList<PermissionDto> Children { get; set; }
 
         public string MultiTenancySides { get; set; }
     }

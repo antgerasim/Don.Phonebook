@@ -22,6 +22,8 @@ namespace Don.Phonebook.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
+
+
             var roles = (await _roleAppService.GetAll(new PagedAndSortedResultRequestDto())).Items;
             var permissions = (await _roleAppService.GetAllPermissions()).Items;
             var model = new RoleListViewModel

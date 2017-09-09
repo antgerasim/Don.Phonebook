@@ -2,14 +2,17 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
+using Abp.Authorization;
 using Abp.AutoMapper;
 using Abp.Collections.Extensions;
 using Abp.Domain.Repositories;
 using Castle.Core.Internal;
+using Don.Phonebook.Authorization;
 using Don.Phonebook.Persons.Dto;
 
 namespace Don.Phonebook.Persons
 {
+    [AbpAuthorize(PermissionNames.Pages_Tenant_PhoneBook)]
     public class PersonAppService : PhonebookAppServiceBase, IPersonAppService
     {
         private readonly IRepository<Person> _personRepository;

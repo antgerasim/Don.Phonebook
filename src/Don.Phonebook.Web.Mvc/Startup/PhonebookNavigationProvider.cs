@@ -60,7 +60,8 @@ namespace Don.Phonebook.Web.Startup
                         L("PhoneBook"),
                         url: "PhoneBook",
                         //icon: "glyphicon glyphicon-book"
-                        icon: "info"
+                        icon: "info",
+                        requiredPermissionName:PermissionNames.Pages_Tenant_PhoneBook
 
                     )
                 )
